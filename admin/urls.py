@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """admin URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,11 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+
+from django.conf.urls import url, include
 from django.contrib import admin
-# from review import *
+from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
+from review.views import *
+
+router = DefaultRouter()
+
+router.register('review', ReviewViewSet, base_name="review")
 
 urlpatterns = [
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    # url(r'^$', upload_file)
+    # url('docs/', include_docs_urls(title="API文档", public=False)),
 ]

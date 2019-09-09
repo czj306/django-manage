@@ -29,7 +29,9 @@ SECRET_KEY = 'g8g=xntl-x41c_re4q0x7cs5&wobb-a=r2a91j9a3=(iw$tm4-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -41,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'review',
-    'setting',
+    'rest_framework',
+    'review.apps.ReviewConfig',
 ]
 
 MIDDLEWARE = [
